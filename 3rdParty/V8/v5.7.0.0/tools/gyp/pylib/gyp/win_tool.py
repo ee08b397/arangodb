@@ -16,6 +16,7 @@ import subprocess
 import stat
 import string
 import sys
+import random
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -35,6 +36,12 @@ class WinTool(object):
   be executed directly, or dispatched from an argument list."""
 
   def _UseSeparateMspdbsrv(self, env, args):
+    
+    print(randint(0, 9))
+
+    env['_MSPDBSRV_ENDPOINT_'] = random.randint(0,99999999)
+    print("HASSHAHSHAHSASSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
+    print(env['_MSPDBSRV_ENDPOINT_'])
     """Allows to use a unique instance of mspdbsrv.exe per linker instead of a
     shared one."""
     if len(args) < 1:
@@ -59,7 +66,7 @@ class WinTool(object):
     # Adds the appropriate environment variable. This will be read by link.exe
     # to know which instance of mspdbsrv.exe it should connect to (if it's
     # not set then the default endpoint is used).
-    env['_MSPDBSRV_ENDPOINT_'] = endpoint_name
+    
 
   def Dispatch(self, args):
     """Dispatches a string command to a method."""
