@@ -114,8 +114,8 @@ class WinTool(object):
     This happens when there are exports from the dll or exe.
     """
     env = self._GetEnv(arch)
-    if use_separate_mspdbsrv == 'True':
-      self._UseSeparateMspdbsrv(env, args)
+    """if use_separate_mspdbsrv == 'True':"""
+    self._UseSeparateMspdbsrv(env, args)
     if sys.platform == 'win32':
       args = list(args)  # *args is a tuple by default, which is read-only.
       args[0] = args[0].replace('/', '\\')
